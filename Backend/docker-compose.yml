@@ -1,0 +1,17 @@
+# Optional. Beginners can install PostgreSQL locally first.
+services:
+  postgres:
+    image: postgis/postgis:16-3.4
+    container_name: ner-connect-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ner_connect
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ner_pgdata:/var/lib/postgresql/data
+
+volumes:
+  ner_pgdata:
